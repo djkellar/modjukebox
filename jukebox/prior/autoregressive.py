@@ -255,7 +255,7 @@ class ConditionalAutoregressive2D(nn.Module):
             return x
 
     def primed_sample(self, n_samples, x, x_cond=None, y_cond=None, encoder_kv=None, fp16=False, temp=1.0, top_k=0,
-                      top_p=0.0, get_preds=False, chunk_size=None, sample_tokens=None, combined_progress=False, prob_func=None):
+                      top_p=0.0, get_preds=True, chunk_size=None, sample_tokens=None, combined_progress=False, prob_func=None):
         assert self.training == False
 
         if sample_tokens is None: sample_tokens=self.input_dims
