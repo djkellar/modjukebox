@@ -320,7 +320,7 @@ class ConditionalAutoregressive2D(nn.Module):
                     assert x_prime.shape == (n_samples, current_chunk_size, self.width)
                     del cond_prime
                     x_primes.append(x_prime)
-                    x_primes_numpy = np.list(x_primes)
+                    x_primes_numpy = np.array(x_primes)
                     np.save('x_primes.npy', x_primes_numpy)
                 else:
                     del x_prime
