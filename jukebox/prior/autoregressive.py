@@ -331,7 +331,7 @@ class ConditionalAutoregressive2D(nn.Module):
             if get_preds:
                 x_prime = t.cat(x_primes, dim=1)
                 assert x_prime.shape == (n_samples, len(xs), self.width)
-                t.save(x_prime, 'x_primeinputsong.pt'
+                t.save(x_prime, 'x_primeinputsong.pt')
                 x_prime = self.x_out(x_prime)  # Predictions
                 preds.append(x_prime)
             
