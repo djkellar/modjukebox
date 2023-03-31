@@ -320,15 +320,22 @@ class ConditionalAutoregressive2D(nn.Module):
                     assert x_prime.shape == (n_samples, current_chunk_size, self.width)
                     del cond_prime
                     x_primes.append(x_prime)
+                
                 else:
                     del x_prime
-
+            
+            
+            #SAVE x_prime and x_primes
+           
             if get_preds:
                 x_prime = t.cat(x_primes, dim=1)
                 assert x_prime.shape == (n_samples, len(xs), self.width)
                 x_prime = self.x_out(x_prime)  # Predictions
                 preds.append(x_prime)
-
+            
+            t.save(x_prime, 'x_prime.pt')
+            np.save('x_primes.npy', x_primes_numpy)
+            
             empty_cache()
             self.transformer.check_cache(n_samples, len(xs), fp16)
 
